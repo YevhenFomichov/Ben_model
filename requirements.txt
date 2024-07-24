@@ -1,0 +1,10 @@
+mlflow==2.10.2
+numpy==1.23.5
+tensorflow==2.15.0
+pydub 
+tqdm 
+ffmpeg
+librosa
+soundfile
+statistics
+streamlit
