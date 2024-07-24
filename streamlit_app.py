@@ -6,7 +6,7 @@ import soundfile as sf
 import tensorflow as tf
 
 # Загрузка обученной модели
-model = tf.keras.models.load_model('')
+model = tf.keras.models.load_model('data/model/')
 
 # Определение функций для обработки аудиофайлов и извлечения признаков
 def extract_features(audio, sample_rate, frame_length, feature_type, num_mfcc_features):
