@@ -4,6 +4,7 @@ import librosa
 from tensorflow.keras.models import load_model
 import matplotlib.pyplot as plt
 import soundfile as sf
+import tensorflow as tf
 
 # Загрузка обученной модели
 model = tf.keras.models.load_model('data/model/')
