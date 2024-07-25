@@ -2,8 +2,8 @@ import streamlit as st
 import numpy as np
 import librosa
 from tensorflow.keras.models import load_model
+import matplotlib.pyplot as plt
 import soundfile as sf
-import tensorflow as tf
 
 # Загрузка обученной модели
 model = tf.keras.models.load_model('data/model/')
@@ -50,6 +50,19 @@ if uploaded_file is not None:
 
     # Выполнение предсказаний
     predictions = model.predict(features).flatten()
+
+    # Построение графика
+    time_axis = np.linspace(0, len(audio) / sample_rate, num=len(predictions))
+    average_value = np.mean(predictions)
+
+    fig, ax = plt.subplots()
+    ax.plot(time_axis, predictions, label='Predicted Flow Rate L/min')
+    ax.axhline(y=average_value, color='r', linestyle='--', label='Average Flow Rate L/min')
+    ax.set_xlabel('Time (s)')
+    ax.set_ylabel('Flow Rate L/min')
+    ax.legend()
+
+    st.pyplot(fig)
 
     # Отображение предсказаний
     st.write('Predicted values:')
